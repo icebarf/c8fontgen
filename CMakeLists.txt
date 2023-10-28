@@ -13,6 +13,8 @@ target_include_directories(c8fontgen PUBLIC lib/raygui/src)
 target_sources(c8fontgen 
                   PRIVATE src/Chip8FontGenerator.h
                   PRIVATE src/Chip8FontGenerator.c
+                  PRIVATE src/main.c
+                  PRIVATE src/raygui_impl.c
               )
 target_compile_options(c8fontgen PUBLIC -Wall -Wextra -Wpedantic -Wno-dollar-in-identifier-extension
                                       -Wshadow -Wconversion -O3
