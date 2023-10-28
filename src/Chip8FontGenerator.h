@@ -9,7 +9,7 @@
  *       INIT: GuiChip8FontGeneratorState state = InitGuiChip8FontGenerator();
  *       DRAW: GuiChip8FontGenerator(&state);
  *
- *   LICENSE: Same as root of repository
+ *   LICENSE: Propietary License
  *
  *   Generated with rGuiLayout by raylib technologies
  *   Modified by Amritpal Singh
@@ -27,24 +27,6 @@
 #ifndef GUI_CHIP8FONTGENERATOR_H
 #define GUI_CHIP8FONTGENERATOR_H
 
-enum
-{
-  OUTPUT_TEXT_MAX = 0x200,
-};
-
-enum LayoutRectangleNames
-{
-  PixelEditorBoxRec,
-  OutputBoxRec,
-  OutputModeBoxRec,
-  HexModeButtonRec,
-  DecimalModeButtonRec,
-  BinaryModeButtonRec,
-  GenerateOutputButtonRec,
-  OutputTextBoxRec,
-  LAYOUT_RECS_COUNT = 8,
-};
-
 typedef struct
 {
   // Define anchors
@@ -52,10 +34,10 @@ typedef struct
 
   // Define controls variables
   bool OutputTextBoxEditMode;
-  char OutputTextBoxText[OUTPUT_TEXT_MAX]; // TextBox: OutputTextBox
+  char OutputTextBoxText[0x200]; // TextBox: OutputTextBox
 
   // Define rectangles
-  Rectangle layoutRecs[LAYOUT_RECS_COUNT];
+  Rectangle layoutRecs[24];
 
   // Custom state variables (depend on development software)
   // NOTE: This variables should be added manually if required
@@ -121,7 +103,7 @@ InitGuiChip8FontGenerator(void)
   GuiChip8FontGeneratorState state = { 0 };
 
   // Init anchors
-  state.OriginAnchor = (Vector2){ 0, 0 }; // ANCHOR ID:1
+  state.OriginAnchor = (Vector2){ 409, 169 }; // ANCHOR ID:1
 
   // Initilize controls variables
   state.OutputTextBoxEditMode = false;
@@ -129,29 +111,76 @@ InitGuiChip8FontGenerator(void)
 
   // Init controls rectangles
   state.layoutRecs[0] = (Rectangle){
-    state.OriginAnchor.x + 24, state.OriginAnchor.y + 24, 433, 326
+    state.OriginAnchor.x + 24, state.OriginAnchor.y + 24, 471, 343
   }; // GroupBox: PixelEditorBox
   state.layoutRecs[1] = (Rectangle){
-    state.OriginAnchor.x + 480, state.OriginAnchor.y + 32, 240, 217
+    state.OriginAnchor.x + 504, state.OriginAnchor.y + 24, 240, 217
   }; // GroupBox: OutputBox
   state.layoutRecs[2] = (Rectangle){
-    state.OriginAnchor.x + 480, state.OriginAnchor.y + 264, 240, 49
+    state.OriginAnchor.x + 504, state.OriginAnchor.y + 256, 240, 49
   }; // GroupBox: OutputModeBox
   state.layoutRecs[3] = (Rectangle){
-    state.OriginAnchor.x + 489, state.OriginAnchor.y + 279, 58, 25
+    state.OriginAnchor.x + 512, state.OriginAnchor.y + 272, 58, 25
   }; // Button: HexModeButton
   state.layoutRecs[4] = (Rectangle){
-    state.OriginAnchor.x + 572, state.OriginAnchor.y + 279, 58, 25
+    state.OriginAnchor.x + 592, state.OriginAnchor.y + 272, 58, 25
   }; // Button: DecimalModeButton
   state.layoutRecs[5] = (Rectangle){
-    state.OriginAnchor.x + 654, state.OriginAnchor.y + 279, 58, 25
+    state.OriginAnchor.x + 680, state.OriginAnchor.y + 272, 58, 25
   }; // Button: BinaryModeButton
-  state.layoutRecs[6] = (Rectangle){
-    state.OriginAnchor.x + 538, state.OriginAnchor.y + 327, 120, 24
-  }; // Button: GenerateOutputButton
+  state.layoutRecs[6] =
+    (Rectangle){ 947, 528, 120, 24 }; // Button: GenerateOutputButton
   state.layoutRecs[7] = (Rectangle){
     state.OriginAnchor.x + 503, state.OriginAnchor.y + 71, 193, 169
   }; // TextBox: OutputTextBox
+  state.layoutRecs[8] = (Rectangle){
+    state.OriginAnchor.x + 40, state.OriginAnchor.y + 40, 103, 71
+  }; // Panel: Editor0
+  state.layoutRecs[9] = (Rectangle){
+    state.OriginAnchor.x + 152, state.OriginAnchor.y + 40, 103, 71
+  }; // Panel: Editor1
+  state.layoutRecs[10] = (Rectangle){
+    state.OriginAnchor.x + 264, state.OriginAnchor.y + 40, 103, 71
+  }; // Panel: Editor3
+  state.layoutRecs[11] = (Rectangle){
+    state.OriginAnchor.x + 40, state.OriginAnchor.y + 120, 103, 71
+  }; // Panel: Editor4
+  state.layoutRecs[12] = (Rectangle){
+    state.OriginAnchor.x + 40, state.OriginAnchor.y + 200, 103, 71
+  }; // Panel: Editor8
+  state.layoutRecs[13] = (Rectangle){
+    state.OriginAnchor.x + 40, state.OriginAnchor.y + 280, 103, 71
+  }; // Panel: EditorC
+  state.layoutRecs[14] = (Rectangle){
+    state.OriginAnchor.x + 152, state.OriginAnchor.y + 120, 103, 71
+  }; // Panel: Editor5
+  state.layoutRecs[15] = (Rectangle){
+    state.OriginAnchor.x + 264, state.OriginAnchor.y + 120, 103, 71
+  }; // Panel: Editor6
+  state.layoutRecs[16] = (Rectangle){
+    state.OriginAnchor.x + 376, state.OriginAnchor.y + 40, 103, 71
+  }; // Panel: Editor4
+  state.layoutRecs[17] = (Rectangle){
+    state.OriginAnchor.x + 376, state.OriginAnchor.y + 120, 103, 71
+  }; // Panel: Editor7
+  state.layoutRecs[18] = (Rectangle){
+    state.OriginAnchor.x + 152, state.OriginAnchor.y + 200, 103, 71
+  }; // Panel: Editor9
+  state.layoutRecs[19] = (Rectangle){
+    state.OriginAnchor.x + 264, state.OriginAnchor.y + 200, 103, 71
+  }; // Panel: EditorA
+  state.layoutRecs[20] = (Rectangle){
+    state.OriginAnchor.x + 376, state.OriginAnchor.y + 200, 103, 71
+  }; // Panel: EditorB
+  state.layoutRecs[21] = (Rectangle){
+    state.OriginAnchor.x + 152, state.OriginAnchor.y + 280, 103, 71
+  }; // Panel: EditorD
+  state.layoutRecs[22] = (Rectangle){
+    state.OriginAnchor.x + 264, state.OriginAnchor.y + 280, 103, 71
+  }; // Panel: EditorE
+  state.layoutRecs[23] = (Rectangle){
+    state.OriginAnchor.x + 376, state.OriginAnchor.y + 280, 103, 71
+  }; // Panel: EditorF
 
   // Custom variables initialization
 
@@ -212,6 +241,22 @@ GuiChip8FontGenerator(GuiChip8FontGeneratorState* state)
                  128,
                  state->OutputTextBoxEditMode))
     state->OutputTextBoxEditMode = !state->OutputTextBoxEditMode;
+  GuiPanel(state->layoutRecs[8], Editor0Text);
+  GuiPanel(state->layoutRecs[9], Editor1Text);
+  GuiPanel(state->layoutRecs[10], Editor3Text);
+  GuiPanel(state->layoutRecs[11], Editor4Text);
+  GuiPanel(state->layoutRecs[12], Editor8Text);
+  GuiPanel(state->layoutRecs[13], EditorCText);
+  GuiPanel(state->layoutRecs[14], Editor5Text);
+  GuiPanel(state->layoutRecs[15], Editor6Text);
+  GuiPanel(state->layoutRecs[16], Editor4Text);
+  GuiPanel(state->layoutRecs[17], Editor7Text);
+  GuiPanel(state->layoutRecs[18], Editor9Text);
+  GuiPanel(state->layoutRecs[19], EditorAText);
+  GuiPanel(state->layoutRecs[20], EditorBText);
+  GuiPanel(state->layoutRecs[21], EditorDText);
+  GuiPanel(state->layoutRecs[22], EditorEText);
+  GuiPanel(state->layoutRecs[23], EditorFText);
 }
 
 #endif // GUI_CHIP8FONTGENERATOR_IMPLEMENTATION
