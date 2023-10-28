@@ -9,7 +9,7 @@
  *       INIT: GuiChip8FontGeneratorState state = InitGuiChip8FontGenerator();
  *       DRAW: GuiChip8FontGenerator(&state);
  *
- *   LICENSE: Propietary License
+ *   LICENSE: Same as repository root
  *
  *   Generated with rGuiLayout by raylib technologies
  *   Modified by Amritpal Singh
