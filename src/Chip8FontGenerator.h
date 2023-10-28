@@ -1,6 +1,6 @@
 /*******************************************************************************************
  *
- *   Chip8FontGenerator v1.0.0 - Generate your own chip8 Fonts
+ *   Chip8FontGenerator v1.0.0 - Generate Custom Chip8 Fonts
  *
  *   MODULE USAGE:
  *       #define GUI_CHIP8FONTGENERATOR_IMPLEMENTATION
@@ -27,9 +27,13 @@
 #ifndef GUI_CHIP8FONTGENERATOR_H
 #define GUI_CHIP8FONTGENERATOR_H
 
+enum
+{
+  OUTPUT_TEXT_MAX = 0x200,
+};
+
 enum LayoutRectangleNames
 {
-  MainWindowRec,
   PixelEditorBoxRec,
   OutputBoxRec,
   OutputModeBoxRec,
@@ -38,6 +42,7 @@ enum LayoutRectangleNames
   BinaryModeButtonRec,
   GenerateOutputButtonRec,
   OutputTextBoxRec,
+  LAYOUT_RECS_COUNT = 8,
 };
 
 typedef struct
@@ -46,12 +51,11 @@ typedef struct
   Vector2 OriginAnchor; // ANCHOR ID:1
 
   // Define controls variables
-  bool MainWindowActive; // WindowBox: MainWindow
   bool OutputTextBoxEditMode;
-  char OutputTextBoxText[128]; // TextBox: OutputTextBox
+  char OutputTextBoxText[OUTPUT_TEXT_MAX]; // TextBox: OutputTextBox
 
   // Define rectangles
-  Rectangle layoutRecs[9];
+  Rectangle layoutRecs[LAYOUT_RECS_COUNT];
 
   // Custom state variables (depend on development software)
   // NOTE: This variables should be added manually if required
@@ -117,39 +121,35 @@ InitGuiChip8FontGenerator(void)
   GuiChip8FontGeneratorState state = { 0 };
 
   // Init anchors
-  state.OriginAnchor = (Vector2){ 409, 169 }; // ANCHOR ID:1
+  state.OriginAnchor = (Vector2){ 0, 0 }; // ANCHOR ID:1
 
   // Initilize controls variables
-  state.MainWindowActive = true; // WindowBox: MainWindow
   state.OutputTextBoxEditMode = false;
   strcpy(state.OutputTextBoxText, ""); // TextBox: OutputTextBox
 
   // Init controls rectangles
   state.layoutRecs[0] = (Rectangle){
-    state.OriginAnchor.x + 0, state.OriginAnchor.y + 0, 743, 400
-  }; // WindowBox: MainWindow
-  state.layoutRecs[1] = (Rectangle){
-    state.OriginAnchor.x + 24, state.OriginAnchor.y + 47, 433, 326
+    state.OriginAnchor.x + 24, state.OriginAnchor.y + 24, 433, 326
   }; // GroupBox: PixelEditorBox
-  state.layoutRecs[2] = (Rectangle){
-    state.OriginAnchor.x + 480, state.OriginAnchor.y + 47, 240, 217
+  state.layoutRecs[1] = (Rectangle){
+    state.OriginAnchor.x + 480, state.OriginAnchor.y + 32, 240, 217
   }; // GroupBox: OutputBox
-  state.layoutRecs[3] = (Rectangle){
-    state.OriginAnchor.x + 480, state.OriginAnchor.y + 288, 240, 49
+  state.layoutRecs[2] = (Rectangle){
+    state.OriginAnchor.x + 480, state.OriginAnchor.y + 264, 240, 49
   }; // GroupBox: OutputModeBox
-  state.layoutRecs[4] = (Rectangle){
-    state.OriginAnchor.x + 489, state.OriginAnchor.y + 299, 58, 25
+  state.layoutRecs[3] = (Rectangle){
+    state.OriginAnchor.x + 489, state.OriginAnchor.y + 279, 58, 25
   }; // Button: HexModeButton
-  state.layoutRecs[5] = (Rectangle){
-    state.OriginAnchor.x + 572, state.OriginAnchor.y + 299, 58, 25
+  state.layoutRecs[4] = (Rectangle){
+    state.OriginAnchor.x + 572, state.OriginAnchor.y + 279, 58, 25
   }; // Button: DecimalModeButton
-  state.layoutRecs[6] = (Rectangle){
-    state.OriginAnchor.x + 654, state.OriginAnchor.y + 299, 58, 25
+  state.layoutRecs[5] = (Rectangle){
+    state.OriginAnchor.x + 654, state.OriginAnchor.y + 279, 58, 25
   }; // Button: BinaryModeButton
-  state.layoutRecs[7] = (Rectangle){
-    state.OriginAnchor.x + 538, state.OriginAnchor.y + 351, 120, 24
+  state.layoutRecs[6] = (Rectangle){
+    state.OriginAnchor.x + 538, state.OriginAnchor.y + 327, 120, 24
   }; // Button: GenerateOutputButton
-  state.layoutRecs[8] = (Rectangle){
+  state.layoutRecs[7] = (Rectangle){
     state.OriginAnchor.x + 503, state.OriginAnchor.y + 71, 193, 169
   }; // TextBox: OutputTextBox
 
@@ -186,7 +186,6 @@ void
 GuiChip8FontGenerator(GuiChip8FontGeneratorState* state)
 {
   // Const text
-  const char* MainWindowText = "Chip-8 Font Generator"; // WINDOWBOX: MainWindow
   const char* PixelEditorBoxText = "Pixel Editor"; // GROUPBOX: PixelEditorBox
   const char* OutputBoxText = "Output";            // GROUPBOX: OutputBox
   const char* OutputModeBoxText = "Output Mode";   // GROUPBOX: OutputModeBox
@@ -197,26 +196,22 @@ GuiChip8FontGenerator(GuiChip8FontGeneratorState* state)
     "Generate Font"; // BUTTON: GenerateOutputButton
 
   // Draw controls
-  if (state->MainWindowActive) {
-    state->MainWindowActive =
-      !GuiWindowBox(state->layoutRecs[0], MainWindowText);
-    GuiGroupBox(state->layoutRecs[1], PixelEditorBoxText);
-    GuiGroupBox(state->layoutRecs[2], OutputBoxText);
-    GuiGroupBox(state->layoutRecs[3], OutputModeBoxText);
-    if (GuiButton(state->layoutRecs[4], HexModeButtonText))
-      HexModeButton();
-    if (GuiButton(state->layoutRecs[5], DecimalModeButtonText))
-      DecimalModeButton();
-    if (GuiButton(state->layoutRecs[6], BinaryModeButtonText))
-      BinaryModeButton();
-    if (GuiButton(state->layoutRecs[7], GenerateOutputButtonText))
-      GenerateOutputButton();
-    if (GuiTextBox(state->layoutRecs[8],
-                   state->OutputTextBoxText,
-                   128,
-                   state->OutputTextBoxEditMode))
-      state->OutputTextBoxEditMode = !state->OutputTextBoxEditMode;
-  }
+  GuiGroupBox(state->layoutRecs[0], PixelEditorBoxText);
+  GuiGroupBox(state->layoutRecs[1], OutputBoxText);
+  GuiGroupBox(state->layoutRecs[2], OutputModeBoxText);
+  if (GuiButton(state->layoutRecs[3], HexModeButtonText))
+    HexModeButton();
+  if (GuiButton(state->layoutRecs[4], DecimalModeButtonText))
+    DecimalModeButton();
+  if (GuiButton(state->layoutRecs[5], BinaryModeButtonText))
+    BinaryModeButton();
+  if (GuiButton(state->layoutRecs[6], GenerateOutputButtonText))
+    GenerateOutputButton();
+  if (GuiTextBox(state->layoutRecs[7],
+                 state->OutputTextBoxText,
+                 128,
+                 state->OutputTextBoxEditMode))
+    state->OutputTextBoxEditMode = !state->OutputTextBoxEditMode;
 }
 
 #endif // GUI_CHIP8FONTGENERATOR_IMPLEMENTATION
