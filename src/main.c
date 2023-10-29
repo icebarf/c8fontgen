@@ -1,11 +1,11 @@
-#include "Chip8FontGenerator.h"
+#include "gui_Chip8FontGenerator.h"
 
 #include "lightc8.rgs.h"
 
 enum
 {
-  DISPW = 780,
-  DISPH = 680,
+  DISPW = 800,
+  DISPH = 690,
 };
 
 int
