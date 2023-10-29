@@ -4,8 +4,8 @@
 
 enum
 {
-  DISPW = 800,
-  DISPH = 690,
+  DISPW = 910,
+  DISPH = 640,
 };
 
 int
