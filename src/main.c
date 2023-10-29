@@ -1,10 +1,11 @@
-
 #include "Chip8FontGenerator.h"
+
+#include "lightc8.rgs.h"
 
 enum
 {
   DISPW = 780,
-  DISPH = 580,
+  DISPH = 680,
 };
 
 int
@@ -13,6 +14,7 @@ main(int argc, char* argv[])
   GuiChip8FontGeneratorState window_layout = InitGuiChip8FontGenerator();
   InitWindow(DISPW, DISPH, "Chip-8 Font Generator");
   SetTargetFPS(60);
+  GuiLoadStyleLightC8();
 
   while (!WindowShouldClose()) {
     BeginDrawing();

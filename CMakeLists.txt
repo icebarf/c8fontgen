@@ -13,6 +13,7 @@ target_include_directories(c8fontgen PUBLIC lib/raygui/src)
 target_sources(c8fontgen 
                   PRIVATE src/Chip8FontGenerator.h
                   PRIVATE src/Chip8FontGenerator.c
+                  PRIVATE src/lightc8.rgs.h
                   PRIVATE src/main.c
                   PRIVATE src/raygui_impl.c
               )
