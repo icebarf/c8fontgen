@@ -1,6 +1,6 @@
 # c8fontgen
 
-[!ui_light](img/ui_light.png)
+![ui_light](img/ui_light.png)
 
 c8fontgen - abbreviated from Chip-8 Font Generator, is a tiny pixel editor
 that allows you to generate custom chip-8 fonts. Chip-8 Sprites are 4x5, 1-bit
