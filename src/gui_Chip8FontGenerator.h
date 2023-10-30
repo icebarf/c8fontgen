@@ -26,6 +26,8 @@
 #undef RAYGUI_IMPLEMENTATION
 #include "raygui.h"
 
+#include <stdint.h> // Required for: N-wide integer types
+#include <stdio.h>  // Required for: fprintf()
 #include <string.h> // Required for: strcpy()
 
 #ifndef GUI_CHIP8FONTGENERATOR_H
@@ -370,13 +372,22 @@ typedef struct
   // Define controls variables
   bool ToggleActive[TOTAL_TOGGLE_COUNT]; // Toggle: Toggle button active
   bool OuputFontTextBoxEditMode;
-  char OuputFontTextBoxText[128]; // TextBox: OuputFontTextBox
+  char OuputFontTextBoxText[512]; // TextBox: OuputFontTextBox
 
   // Define rectangles
   Rectangle layoutRecs[LayoutRecsCount];
 
   // Custom state variables (depend on development software)
   // NOTE: This variables should be added manually if required
+
+  enum Mode
+  {
+    Hexadecimal,
+    Decimal,
+    Binary,
+  } OutputMode;
+
+  uint8_t Sprites[16][5];
 
 } GuiChip8FontGeneratorState;
 
@@ -579,27 +590,93 @@ InitGuiChip8FontGenerator(void)
 }
 // Button: OutputInHexButton logic
 static void
-OutputInHexButton()
+OutputInHexButton(enum Mode* output)
 {
-  // TODO: Implement control logic
+  *output = Hexadecimal;
 }
 // Button: OutputInDecimalButton logic
 static void
-OutputInDecimalButton()
+OutputInDecimalButton(enum Mode* Output)
 {
-  // TODO: Implement control logic
+  *Output = Decimal;
 }
 // Button: OutputInBinaryButton logic
 static void
-OutputInBinaryButton()
+OutputInBinaryButton(enum Mode* Output)
 {
-  // TODO: Implement control logic
+  *Output = Binary;
 }
+
+uint8_t
+PixelToByte(bool px0, bool px1, bool px2, bool px3)
+{
+  uint8_t sprite_unit = 0;
+  if (!px0)
+    sprite_unit |= 0x80;
+  if (!px1)
+    sprite_unit |= 0x40;
+  if (!px2)
+    sprite_unit |= 0x20;
+  if (!px3)
+    sprite_unit |= 0x10;
+
+  return sprite_unit;
+}
+
+static void
+FindSprites(uint8_t (*Sprites)[16][5], bool (*pixels)[TOTAL_TOGGLE_COUNT])
+{
+  for (int i = 0; i < TOTAL_TOGGLE_COUNT; i += 20) {
+    (*Sprites)[i / 20][0] = PixelToByte(
+      (*pixels)[i + 0], (*pixels)[i + 1], (*pixels)[i + 2], (*pixels)[i + 3]);
+    (*Sprites)[i / 20][1] = PixelToByte((*pixels)[4 + i + 0],
+                                        (*pixels)[4 + i + 1],
+                                        (*pixels)[4 + i + 2],
+                                        (*pixels)[4 + i + 3]);
+    (*Sprites)[i / 20][2] = PixelToByte((*pixels)[8 + i + 0],
+                                        (*pixels)[8 + i + 1],
+                                        (*pixels)[8 + i + 2],
+                                        (*pixels)[8 + i + 3]);
+    (*Sprites)[i / 20][3] = PixelToByte((*pixels)[12 + i + 0],
+                                        (*pixels)[12 + i + 1],
+                                        (*pixels)[12 + i + 2],
+                                        (*pixels)[12 + i + 3]);
+    (*Sprites)[i / 20][4] = PixelToByte((*pixels)[16 + i + 0],
+                                        (*pixels)[16 + i + 1],
+                                        (*pixels)[16 + i + 2],
+                                        (*pixels)[16 + i + 3]);
+  }
+}
+
+static void
+PutInTextBox(char (*OutText)[512], uint8_t (*Sprites)[16][5])
+{
+  for (int i = 0, index = 0; i < 16; i++, index += 28) {
+    // fprintf(stdout, "Sprite 0x%2x\n", i);
+    // fprintf(stdout,
+    //         "0x%2x, 0x%2x, 0x%2x, 0x%2x, 0x%2x\n\n",
+    //         (*Sprites)[i][0],
+    //         (*Sprites)[i][1],
+    //         (*Sprites)[i][2],
+    //         (*Sprites)[i][3],
+    //         (*Sprites)[i][4]);
+    snprintf(&(*OutText)[30 * i],
+             31,
+             "0x%2x, 0x%2x, 0x%2x, 0x%2x, 0x%2x,\n",
+             (*Sprites)[i][0],
+             (*Sprites)[i][1],
+             (*Sprites)[i][2],
+             (*Sprites)[i][3],
+             (*Sprites)[i][4]);
+  }
+}
+
 // Button: GenerateFontButton logic
 static void
-GenerateFontButton()
+GenerateFontButton(GuiChip8FontGeneratorState* state)
 {
-  // TODO: Implement control logic
+  FindSprites(&state->Sprites, &state->ToggleActive);
+  PutInTextBox(&state->OuputFontTextBoxText, &state->Sprites);
 }
 // Button: ResetEditorButton logic
 static void
@@ -667,13 +744,13 @@ GuiChip8FontGenerator(GuiChip8FontGeneratorState* state)
     state->OuputFontTextBoxEditMode = !state->OuputFontTextBoxEditMode;
   GuiGroupBox(state->layoutRecs[323], FontFormatBoxText);
   if (GuiButton(state->layoutRecs[324], OutputInHexButtonText))
-    OutputInHexButton();
+    OutputInHexButton(&state->OutputMode);
   if (GuiButton(state->layoutRecs[325], OutputInDecimalButtonText))
-    OutputInDecimalButton();
+    OutputInDecimalButton(&state->OutputMode);
   if (GuiButton(state->layoutRecs[326], OutputInBinaryButtonText))
-    OutputInBinaryButton();
+    OutputInBinaryButton(&state->OutputMode);
   if (GuiButton(state->layoutRecs[327], GenerateFontButtonText))
-    GenerateFontButton();
+    GenerateFontButton(state);
   GuiLabel(state->layoutRecs[328], Label328Text);
   GuiLabel(state->layoutRecs[329], Label329Text);
   GuiLabel(state->layoutRecs[330], Label330Text);
