@@ -403,7 +403,7 @@ extern "C"
   static void OutputInHexButton();     // Button: OutputInHexButton logic
   static void OutputInDecimalButton(); // Button: OutputInDecimalButton logic
   static void OutputInBinaryButton();  // Button: OutputInBinaryButton logic
-  static void Button327();             // Button: Button327 logic
+  static void GenerateFontButton();    // Button: GenerateFontButton logic
   static void ResetEditorButton();     // Button: ResetEditorButton logic
   static void LightThemeButton();      // Button: LightThemeButton logic
   static void DarkThemeButton();       // Button: DarkThemeButton logic
@@ -595,9 +595,9 @@ OutputInBinaryButton()
 {
   // TODO: Implement control logic
 }
-// Button: Button327 logic
+// Button: GenerateFontButton logic
 static void
-Button327()
+GenerateFontButton()
 {
   // TODO: Implement control logic
 }
@@ -631,24 +631,25 @@ GuiChip8FontGenerator(GuiChip8FontGeneratorState* state)
   const char* OutputInDecimalButtonText =
     "Decimal"; // BUTTON: OutputInDecimalButton
   const char* OutputInBinaryButtonText =
-    "Binary";                                  // BUTTON: OutputInBinaryButton
-  const char* Button327Text = "Generate Font"; // BUTTON: Button327
-  const char* Label328Text = "0";              // LABEL: Label328
-  const char* Label329Text = "1";              // LABEL: Label329
-  const char* Label330Text = "2";              // LABEL: Label330
-  const char* Label331Text = "3";              // LABEL: Label331
-  const char* Label332Text = "4";              // LABEL: Label332
-  const char* Label333Text = "5";              // LABEL: Label333
-  const char* Label334Text = "6";              // LABEL: Label334
-  const char* Label335Text = "7";              // LABEL: Label335
-  const char* Label336Text = "8";              // LABEL: Label336
-  const char* Label337Text = "9";              // LABEL: Label337
-  const char* Label338Text = "A";              // LABEL: Label338
-  const char* Label339Text = "B";              // LABEL: Label339
-  const char* Label340Text = "C";              // LABEL: Label340
-  const char* Label341Text = "D";              // LABEL: Label341
-  const char* Label342Text = "E";              // LABEL: Label342
-  const char* Label343Text = "F";              // LABEL: Label343
+    "Binary"; // BUTTON: OutputInBinaryButton
+  const char* GenerateFontButtonText =
+    "Generate Font";              // BUTTON: GenerateFontButton
+  const char* Label328Text = "0"; // LABEL: Label328
+  const char* Label329Text = "1"; // LABEL: Label329
+  const char* Label330Text = "2"; // LABEL: Label330
+  const char* Label331Text = "3"; // LABEL: Label331
+  const char* Label332Text = "4"; // LABEL: Label332
+  const char* Label333Text = "5"; // LABEL: Label333
+  const char* Label334Text = "6"; // LABEL: Label334
+  const char* Label335Text = "7"; // LABEL: Label335
+  const char* Label336Text = "8"; // LABEL: Label336
+  const char* Label337Text = "9"; // LABEL: Label337
+  const char* Label338Text = "A"; // LABEL: Label338
+  const char* Label339Text = "B"; // LABEL: Label339
+  const char* Label340Text = "C"; // LABEL: Label340
+  const char* Label341Text = "D"; // LABEL: Label341
+  const char* Label342Text = "E"; // LABEL: Label342
+  const char* Label343Text = "F"; // LABEL: Label343
   const char* ResetEditorButtonText =
     "Reset Editor";                           // BUTTON: ResetEditorButton
   const char* LightThemeButtonText = "Light"; // BUTTON: LightThemeButton
@@ -671,8 +672,8 @@ GuiChip8FontGenerator(GuiChip8FontGeneratorState* state)
     OutputInDecimalButton();
   if (GuiButton(state->layoutRecs[326], OutputInBinaryButtonText))
     OutputInBinaryButton();
-  if (GuiButton(state->layoutRecs[327], Button327Text))
-    Button327();
+  if (GuiButton(state->layoutRecs[327], GenerateFontButtonText))
+    GenerateFontButton();
   GuiLabel(state->layoutRecs[328], Label328Text);
   GuiLabel(state->layoutRecs[329], Label329Text);
   GuiLabel(state->layoutRecs[330], Label330Text);
