@@ -11,22 +11,15 @@
 //                                                                              //
 //////////////////////////////////////////////////////////////////////////////////
 
-#define LIGHTC8_STYLE_PROPS_COUNT  12
+#define LIGHTC8_STYLE_PROPS_COUNT  5
 
 // Custom style name: LightC8
 static const GuiStyleProp lightc8StyleProps[LIGHTC8_STYLE_PROPS_COUNT] = {
-    { 3, 0, 0x676767ff },    // TOGGLE_BORDER_COLOR_NORMAL 
-    { 3, 1, 0x2e9df6ff },    // TOGGLE_BASE_COLOR_NORMAL 
-    { 3, 2, 0x56d9ecff },    // TOGGLE_TEXT_COLOR_NORMAL 
-    { 3, 3, 0x5c5c5cff },    // TOGGLE_BORDER_COLOR_FOCUSED 
-    { 3, 4, 0x75d1e9ff },    // TOGGLE_BASE_COLOR_FOCUSED 
-    { 3, 5, 0x457f89ff },    // TOGGLE_TEXT_COLOR_FOCUSED 
-    { 3, 6, 0x5a5a5aff },    // TOGGLE_BORDER_COLOR_PRESSED 
-    { 3, 7, 0xeae9e9ff },    // TOGGLE_BASE_COLOR_PRESSED 
-    { 3, 8, 0xf0efefff },    // TOGGLE_TEXT_COLOR_PRESSED 
-    { 3, 9, 0x040404ff },    // TOGGLE_BORDER_COLOR_DISABLED 
-    { 3, 10, 0x010101ff },    // TOGGLE_BASE_COLOR_DISABLED 
-    { 3, 11, 0x010101ff },    // TOGGLE_TEXT_COLOR_DISABLED 
+    { 3, 1, 0x10a8faff },    // TOGGLE_BASE_COLOR_NORMAL 
+    { 3, 2, 0x119dfbff },    // TOGGLE_TEXT_COLOR_NORMAL 
+    { 3, 6, 0x7f7f7fff },    // TOGGLE_BORDER_COLOR_PRESSED 
+    { 3, 7, 0xe8e7e7ff },    // TOGGLE_BASE_COLOR_PRESSED 
+    { 3, 8, 0xe8e3e3ff },    // TOGGLE_TEXT_COLOR_PRESSED 
 };
 
 // Style loading function: LightC8
