@@ -364,6 +364,7 @@ typedef struct
     Toggle319,
     Toggle320,
     TOTAL_TOGGLE_COUNT = 320,
+    LayoutRecsCount = 347,
   };
 
   // Define controls variables
@@ -372,7 +373,7 @@ typedef struct
   char OuputFontTextBoxText[128]; // TextBox: OuputFontTextBox
 
   // Define rectangles
-  Rectangle layoutRecs[347];
+  Rectangle layoutRecs[LayoutRecsCount];
 
   // Custom state variables (depend on development software)
   // NOTE: This variables should be added manually if required
@@ -449,1048 +450,128 @@ InitGuiChip8FontGenerator(void)
   state.OuputFontTextBoxEditMode = false;
   strcpy(state.OuputFontTextBoxText, ""); // TextBox: OuputFontTextBox
 
-  // Init controls rectangles
-  state.layoutRecs[0] = (Rectangle){
-    state.Origin.x + 24, state.Origin.y + 24, 504, 600
-  }; // GroupBox: PixelEditorBox
-  state.layoutRecs[1] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle001
-  state.layoutRecs[2] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle002
-  state.layoutRecs[3] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle003
-  state.layoutRecs[4] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle004
-  state.layoutRecs[5] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle005
-  state.layoutRecs[6] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle006
-  state.layoutRecs[7] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle007
-  state.layoutRecs[8] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle008
-  state.layoutRecs[9] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle009
-  state.layoutRecs[10] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle010
-  state.layoutRecs[11] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle011
-  state.layoutRecs[12] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle012
-  state.layoutRecs[13] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle013
-  state.layoutRecs[14] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle014
-  state.layoutRecs[15] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle015
-  state.layoutRecs[16] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle016
-  state.layoutRecs[17] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle017
-  state.layoutRecs[18] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle018
-  state.layoutRecs[19] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle019
-  state.layoutRecs[20] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle020
-  state.layoutRecs[21] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle021
-  state.layoutRecs[22] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle022
-  state.layoutRecs[23] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle023
-  state.layoutRecs[24] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle024
-  state.layoutRecs[25] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle025
-  state.layoutRecs[26] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle026
-  state.layoutRecs[27] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle027
-  state.layoutRecs[28] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle028
-  state.layoutRecs[29] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle029
-  state.layoutRecs[30] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle030
-  state.layoutRecs[31] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle031
-  state.layoutRecs[32] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle032
-  state.layoutRecs[33] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle033
-  state.layoutRecs[34] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle034
-  state.layoutRecs[35] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle035
-  state.layoutRecs[36] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle036
-  state.layoutRecs[37] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle037
-  state.layoutRecs[38] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle038
-  state.layoutRecs[39] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle039
-  state.layoutRecs[40] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle040
-  state.layoutRecs[41] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle041
-  state.layoutRecs[42] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle042
-  state.layoutRecs[43] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle043
-  state.layoutRecs[44] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle044
-  state.layoutRecs[45] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle045
-  state.layoutRecs[46] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle046
-  state.layoutRecs[47] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle047
-  state.layoutRecs[48] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle048
-  state.layoutRecs[49] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle049
-  state.layoutRecs[50] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle050
-  state.layoutRecs[51] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle051
-  state.layoutRecs[52] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle052
-  state.layoutRecs[53] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle053
-  state.layoutRecs[54] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle054
-  state.layoutRecs[55] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle055
-  state.layoutRecs[56] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle056
-  state.layoutRecs[57] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle057
-  state.layoutRecs[58] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle058
-  state.layoutRecs[59] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle059
-  state.layoutRecs[60] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle060
-  state.layoutRecs[61] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle061
-  state.layoutRecs[62] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle062
-  state.layoutRecs[63] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle063
-  state.layoutRecs[64] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 48, 24, 24
-  }; // Toggle: Toggle064
-  state.layoutRecs[65] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle065
-  state.layoutRecs[66] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle066
-  state.layoutRecs[67] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle067
-  state.layoutRecs[68] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 72, 24, 24
-  }; // Toggle: Toggle068
-  state.layoutRecs[69] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle069
-  state.layoutRecs[70] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle070
-  state.layoutRecs[71] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle071
-  state.layoutRecs[72] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 96, 24, 24
-  }; // Toggle: Toggle072
-  state.layoutRecs[73] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle073
-  state.layoutRecs[74] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle074
-  state.layoutRecs[75] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle075
-  state.layoutRecs[76] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 120, 24, 24
-  }; // Toggle: Toggle076
-  state.layoutRecs[77] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle077
-  state.layoutRecs[78] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle078
-  state.layoutRecs[79] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle079
-  state.layoutRecs[80] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 144, 24, 24
-  }; // Toggle: Toggle080
-  state.layoutRecs[81] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle081
-  state.layoutRecs[82] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle082
-  state.layoutRecs[83] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle083
-  state.layoutRecs[84] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle084
-  state.layoutRecs[85] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle085
-  state.layoutRecs[86] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle086
-  state.layoutRecs[87] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle087
-  state.layoutRecs[88] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle088
-  state.layoutRecs[89] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle089
-  state.layoutRecs[90] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle090
-  state.layoutRecs[91] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle091
-  state.layoutRecs[92] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle092
-  state.layoutRecs[93] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle093
-  state.layoutRecs[94] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle094
-  state.layoutRecs[95] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle095
-  state.layoutRecs[96] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle096
-  state.layoutRecs[97] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle097
-  state.layoutRecs[98] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle098
-  state.layoutRecs[99] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle099
-  state.layoutRecs[100] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle100
-  state.layoutRecs[101] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle101
-  state.layoutRecs[102] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle102
-  state.layoutRecs[103] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle103
-  state.layoutRecs[104] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle104
-  state.layoutRecs[105] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle105
-  state.layoutRecs[106] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle106
-  state.layoutRecs[107] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle107
-  state.layoutRecs[108] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle108
-  state.layoutRecs[109] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle109
-  state.layoutRecs[110] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle110
-  state.layoutRecs[111] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle111
-  state.layoutRecs[112] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle112
-  state.layoutRecs[113] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle113
-  state.layoutRecs[114] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle114
-  state.layoutRecs[115] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle115
-  state.layoutRecs[116] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle116
-  state.layoutRecs[117] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle117
-  state.layoutRecs[118] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle118
-  state.layoutRecs[119] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle119
-  state.layoutRecs[120] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle120
-  state.layoutRecs[121] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle121
-  state.layoutRecs[122] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle122
-  state.layoutRecs[123] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle123
-  state.layoutRecs[124] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle124
-  state.layoutRecs[125] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle125
-  state.layoutRecs[126] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle126
-  state.layoutRecs[127] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle127
-  state.layoutRecs[128] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle128
-  state.layoutRecs[129] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle129
-  state.layoutRecs[130] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle130
-  state.layoutRecs[131] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle131
-  state.layoutRecs[132] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle132
-  state.layoutRecs[133] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle133
-  state.layoutRecs[134] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle134
-  state.layoutRecs[135] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle135
-  state.layoutRecs[136] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle136
-  state.layoutRecs[137] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle137
-  state.layoutRecs[138] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle138
-  state.layoutRecs[139] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle139
-  state.layoutRecs[140] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle140
-  state.layoutRecs[141] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle141
-  state.layoutRecs[142] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle142
-  state.layoutRecs[143] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle143
-  state.layoutRecs[144] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 192, 24, 24
-  }; // Toggle: Toggle144
-  state.layoutRecs[145] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle145
-  state.layoutRecs[146] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle146
-  state.layoutRecs[147] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle147
-  state.layoutRecs[148] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 216, 24, 24
-  }; // Toggle: Toggle148
-  state.layoutRecs[149] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle149
-  state.layoutRecs[150] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle150
-  state.layoutRecs[151] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle151
-  state.layoutRecs[152] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 240, 24, 24
-  }; // Toggle: Toggle152
-  state.layoutRecs[153] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle153
-  state.layoutRecs[154] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle154
-  state.layoutRecs[155] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle155
-  state.layoutRecs[156] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 264, 24, 24
-  }; // Toggle: Toggle156
-  state.layoutRecs[157] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle157
-  state.layoutRecs[158] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle158
-  state.layoutRecs[159] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle159
-  state.layoutRecs[160] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 288, 24, 24
-  }; // Toggle: Toggle160
-  state.layoutRecs[161] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle161
-  state.layoutRecs[162] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle162
-  state.layoutRecs[163] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle163
-  state.layoutRecs[164] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle164
-  state.layoutRecs[165] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle165
-  state.layoutRecs[166] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle166
-  state.layoutRecs[167] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle167
-  state.layoutRecs[168] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle168
-  state.layoutRecs[169] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle169
-  state.layoutRecs[170] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle170
-  state.layoutRecs[171] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle171
-  state.layoutRecs[172] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle172
-  state.layoutRecs[173] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle173
-  state.layoutRecs[174] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle174
-  state.layoutRecs[175] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle175
-  state.layoutRecs[176] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle176
-  state.layoutRecs[177] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle177
-  state.layoutRecs[178] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle178
-  state.layoutRecs[179] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle179
-  state.layoutRecs[180] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle180
-  state.layoutRecs[181] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle181
-  state.layoutRecs[182] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle182
-  state.layoutRecs[183] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle183
-  state.layoutRecs[184] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle184
-  state.layoutRecs[185] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle185
-  state.layoutRecs[186] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle186
-  state.layoutRecs[187] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle187
-  state.layoutRecs[188] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle188
-  state.layoutRecs[189] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle189
-  state.layoutRecs[190] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle190
-  state.layoutRecs[191] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle191
-  state.layoutRecs[192] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle192
-  state.layoutRecs[193] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle193
-  state.layoutRecs[194] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle194
-  state.layoutRecs[195] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle195
-  state.layoutRecs[196] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle196
-  state.layoutRecs[197] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle197
-  state.layoutRecs[198] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle198
-  state.layoutRecs[199] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle199
-  state.layoutRecs[200] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle200
-  state.layoutRecs[201] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle201
-  state.layoutRecs[202] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle202
-  state.layoutRecs[203] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle203
-  state.layoutRecs[204] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle204
-  state.layoutRecs[205] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle205
-  state.layoutRecs[206] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle206
-  state.layoutRecs[207] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle207
-  state.layoutRecs[208] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle208
-  state.layoutRecs[209] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle209
-  state.layoutRecs[210] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle210
-  state.layoutRecs[211] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle211
-  state.layoutRecs[212] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle212
-  state.layoutRecs[213] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle213
-  state.layoutRecs[214] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle214
-  state.layoutRecs[215] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle215
-  state.layoutRecs[216] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle216
-  state.layoutRecs[217] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle217
-  state.layoutRecs[218] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle218
-  state.layoutRecs[219] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle219
-  state.layoutRecs[220] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle220
-  state.layoutRecs[221] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle221
-  state.layoutRecs[222] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle222
-  state.layoutRecs[223] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle223
-  state.layoutRecs[224] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 336, 24, 24
-  }; // Toggle: Toggle224
-  state.layoutRecs[225] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle225
-  state.layoutRecs[226] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle226
-  state.layoutRecs[227] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle227
-  state.layoutRecs[228] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 360, 24, 24
-  }; // Toggle: Toggle228
-  state.layoutRecs[229] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle229
-  state.layoutRecs[230] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle230
-  state.layoutRecs[231] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle231
-  state.layoutRecs[232] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 384, 24, 24
-  }; // Toggle: Toggle232
-  state.layoutRecs[233] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle233
-  state.layoutRecs[234] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle234
-  state.layoutRecs[235] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle235
-  state.layoutRecs[236] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 408, 24, 24
-  }; // Toggle: Toggle236
-  state.layoutRecs[237] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle237
-  state.layoutRecs[238] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle238
-  state.layoutRecs[239] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle239
-  state.layoutRecs[240] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 432, 24, 24
-  }; // Toggle: Toggle240
-  state.layoutRecs[241] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle241
-  state.layoutRecs[242] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle242
-  state.layoutRecs[243] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle243
-  state.layoutRecs[244] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle244
-  state.layoutRecs[245] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle245
-  state.layoutRecs[246] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle246
-  state.layoutRecs[247] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle247
-  state.layoutRecs[248] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle248
-  state.layoutRecs[249] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle249
-  state.layoutRecs[250] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle250
-  state.layoutRecs[251] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle251
-  state.layoutRecs[252] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle252
-  state.layoutRecs[253] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle253
-  state.layoutRecs[254] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle254
-  state.layoutRecs[255] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle255
-  state.layoutRecs[256] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle256
-  state.layoutRecs[257] = (Rectangle){
-    state.Origin.x + 48, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle257
-  state.layoutRecs[258] = (Rectangle){
-    state.Origin.x + 72, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle258
-  state.layoutRecs[259] = (Rectangle){
-    state.Origin.x + 96, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle259
-  state.layoutRecs[260] = (Rectangle){
-    state.Origin.x + 120, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle260
-  state.layoutRecs[261] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle261
-  state.layoutRecs[262] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle262
-  state.layoutRecs[263] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle263
-  state.layoutRecs[264] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle264
-  state.layoutRecs[265] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle265
-  state.layoutRecs[266] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle266
-  state.layoutRecs[267] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle267
-  state.layoutRecs[268] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle268
-  state.layoutRecs[269] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle269
-  state.layoutRecs[270] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle270
-  state.layoutRecs[271] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle271
-  state.layoutRecs[272] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle272
-  state.layoutRecs[273] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle273
-  state.layoutRecs[274] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle274
-  state.layoutRecs[275] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle275
-  state.layoutRecs[276] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle276
-  state.layoutRecs[277] = (Rectangle){
-    state.Origin.x + 168, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle277
-  state.layoutRecs[278] = (Rectangle){
-    state.Origin.x + 192, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle278
-  state.layoutRecs[279] = (Rectangle){
-    state.Origin.x + 216, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle279
-  state.layoutRecs[280] = (Rectangle){
-    state.Origin.x + 240, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle280
-  state.layoutRecs[281] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle281
-  state.layoutRecs[282] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle282
-  state.layoutRecs[283] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle283
-  state.layoutRecs[284] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle284
-  state.layoutRecs[285] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle285
-  state.layoutRecs[286] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle286
-  state.layoutRecs[287] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle287
-  state.layoutRecs[288] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle288
-  state.layoutRecs[289] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle289
-  state.layoutRecs[290] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle290
-  state.layoutRecs[291] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle291
-  state.layoutRecs[292] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle292
-  state.layoutRecs[293] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle293
-  state.layoutRecs[294] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle294
-  state.layoutRecs[295] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle295
-  state.layoutRecs[296] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle296
-  state.layoutRecs[297] = (Rectangle){
-    state.Origin.x + 288, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle297
-  state.layoutRecs[298] = (Rectangle){
-    state.Origin.x + 312, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle298
-  state.layoutRecs[299] = (Rectangle){
-    state.Origin.x + 336, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle299
-  state.layoutRecs[300] = (Rectangle){
-    state.Origin.x + 360, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle300
-  state.layoutRecs[301] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle301
-  state.layoutRecs[302] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle302
-  state.layoutRecs[303] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle303
-  state.layoutRecs[304] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 480, 24, 24
-  }; // Toggle: Toggle304
-  state.layoutRecs[305] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle305
-  state.layoutRecs[306] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle306
-  state.layoutRecs[307] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle307
-  state.layoutRecs[308] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 504, 24, 24
-  }; // Toggle: Toggle308
-  state.layoutRecs[309] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle309
-  state.layoutRecs[310] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle310
-  state.layoutRecs[311] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle311
-  state.layoutRecs[312] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 528, 24, 24
-  }; // Toggle: Toggle312
-  state.layoutRecs[313] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle313
-  state.layoutRecs[314] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle314
-  state.layoutRecs[315] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle315
-  state.layoutRecs[316] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 552, 24, 24
-  }; // Toggle: Toggle316
-  state.layoutRecs[317] = (Rectangle){
-    state.Origin.x + 408, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle317
-  state.layoutRecs[318] = (Rectangle){
-    state.Origin.x + 432, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle318
-  state.layoutRecs[319] = (Rectangle){
-    state.Origin.x + 456, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle319
-  state.layoutRecs[320] = (Rectangle){
-    state.Origin.x + 480, state.Origin.y + 576, 24, 24
-  }; // Toggle: Toggle320
-  state.layoutRecs[321] = (Rectangle){
-    state.Origin.x + 552, state.Origin.y + 24, 336, 304
-  }; // GroupBox: OutputFontBox
-  state.layoutRecs[322] = (Rectangle){
-    state.Origin.x + 560, state.Origin.y + 40, 320, 272
-  }; // TextBox: OuputFontTextBox
-  state.layoutRecs[323] = (Rectangle){
-    state.Origin.x + 552, state.Origin.y + 360, 336, 72
-  }; // GroupBox: FontFormatBox
-  state.layoutRecs[324] = (Rectangle){
-    state.Origin.x + 568, state.Origin.y + 384, 72, 24
-  }; // Button: OutputInHexButton
-  state.layoutRecs[325] = (Rectangle){
-    state.Origin.x + 680, state.Origin.y + 384, 72, 24
-  }; // Button: OutputInDecimalButton
-  state.layoutRecs[326] = (Rectangle){
-    state.Origin.x + 800, state.Origin.y + 384, 72, 24
-  }; // Button: OutputInBinaryButton
-  state.layoutRecs[327] = (Rectangle){
-    state.Origin.x + 648, state.Origin.y + 464, 144, 48
-  }; // Button: Button327
-  state.layoutRecs[328] = (Rectangle){
-    state.Origin.x + 88, state.Origin.y + 168, 10, 24
-  }; // Label: Label328
-  state.layoutRecs[329] = (Rectangle){
-    state.Origin.x + 208, state.Origin.y + 168, 10, 24
-  }; // Label: Label329
-  state.layoutRecs[330] = (Rectangle){
-    state.Origin.x + 328, state.Origin.y + 168, 10, 24
-  }; // Label: Label330
-  state.layoutRecs[331] = (Rectangle){
-    state.Origin.x + 448, state.Origin.y + 168, 10, 24
-  }; // Label: Label331
-  state.layoutRecs[332] = (Rectangle){
-    state.Origin.x + 88, state.Origin.y + 312, 10, 24
-  }; // Label: Label332
-  state.layoutRecs[333] = (Rectangle){
-    state.Origin.x + 208, state.Origin.y + 312, 10, 24
-  }; // Label: Label333
-  state.layoutRecs[334] = (Rectangle){
-    state.Origin.x + 328, state.Origin.y + 312, 10, 24
-  }; // Label: Label334
-  state.layoutRecs[335] = (Rectangle){
-    state.Origin.x + 448, state.Origin.y + 312, 10, 24
-  }; // Label: Label335
-  state.layoutRecs[336] = (Rectangle){
-    state.Origin.x + 88, state.Origin.y + 456, 10, 24
-  }; // Label: Label336
-  state.layoutRecs[337] = (Rectangle){
-    state.Origin.x + 208, state.Origin.y + 456, 10, 24
-  }; // Label: Label337
-  state.layoutRecs[338] = (Rectangle){
-    state.Origin.x + 328, state.Origin.y + 456, 10, 24
-  }; // Label: Label338
-  state.layoutRecs[339] = (Rectangle){
-    state.Origin.x + 448, state.Origin.y + 456, 10, 24
-  }; // Label: Label339
-  state.layoutRecs[340] = (Rectangle){
-    state.Origin.x + 88, state.Origin.y + 600, 10, 24
-  }; // Label: Label340
-  state.layoutRecs[341] = (Rectangle){
-    state.Origin.x + 208, state.Origin.y + 600, 10, 24
-  }; // Label: Label341
-  state.layoutRecs[342] = (Rectangle){
-    state.Origin.x + 328, state.Origin.y + 600, 10, 24
-  }; // Label: Label342
-  state.layoutRecs[343] = (Rectangle){
-    state.Origin.x + 448, state.Origin.y + 600, 10, 24
-  }; // Label: Label343
-  state.layoutRecs[344] = (Rectangle){
-    state.Origin.x + 552, state.Origin.y + 544, 120, 24
-  }; // Button: ResetEditorButton
-  state.layoutRecs[345] = (Rectangle){
-    state.Origin.x + 720, state.Origin.y + 544, 72, 24
-  }; // Button: LightThemeButton
-  state.layoutRecs[346] = (Rectangle){
-    state.Origin.x + 816, state.Origin.y + 544, 72, 24
-  }; // Button: DarkThemeButton
+  Rectangle OffsetAndDimensions[] = {
+    // offset from X, offset from Y, width, height
+    { 24, 24, 504, 600 },  { 48, 48, 24, 24 },    { 72, 48, 24, 24 },
+    { 96, 48, 24, 24 },    { 120, 48, 24, 24 },   { 48, 72, 24, 24 },
+    { 72, 72, 24, 24 },    { 96, 72, 24, 24 },    { 120, 72, 24, 24 },
+    { 48, 96, 24, 24 },    { 72, 96, 24, 24 },    { 96, 96, 24, 24 },
+    { 120, 96, 24, 24 },   { 48, 120, 24, 24 },   { 72, 120, 24, 24 },
+    { 96, 120, 24, 24 },   { 120, 120, 24, 24 },  { 48, 144, 24, 24 },
+    { 72, 144, 24, 24 },   { 96, 144, 24, 24 },   { 120, 144, 24, 24 },
+    { 168, 48, 24, 24 },   { 192, 48, 24, 24 },   { 216, 48, 24, 24 },
+    { 240, 48, 24, 24 },   { 168, 72, 24, 24 },   { 192, 72, 24, 24 },
+    { 216, 72, 24, 24 },   { 240, 72, 24, 24 },   { 168, 96, 24, 24 },
+    { 192, 96, 24, 24 },   { 216, 96, 24, 24 },   { 240, 96, 24, 24 },
+    { 168, 120, 24, 24 },  { 192, 120, 24, 24 },  { 216, 120, 24, 24 },
+    { 240, 120, 24, 24 },  { 168, 144, 24, 24 },  { 192, 144, 24, 24 },
+    { 216, 144, 24, 24 },  { 240, 144, 24, 24 },  { 288, 48, 24, 24 },
+    { 312, 48, 24, 24 },   { 336, 48, 24, 24 },   { 360, 48, 24, 24 },
+    { 288, 72, 24, 24 },   { 312, 72, 24, 24 },   { 336, 72, 24, 24 },
+    { 360, 72, 24, 24 },   { 288, 96, 24, 24 },   { 312, 96, 24, 24 },
+    { 336, 96, 24, 24 },   { 360, 96, 24, 24 },   { 288, 120, 24, 24 },
+    { 312, 120, 24, 24 },  { 336, 120, 24, 24 },  { 360, 120, 24, 24 },
+    { 288, 144, 24, 24 },  { 312, 144, 24, 24 },  { 336, 144, 24, 24 },
+    { 360, 144, 24, 24 },  { 408, 48, 24, 24 },   { 432, 48, 24, 24 },
+    { 456, 48, 24, 24 },   { 480, 48, 24, 24 },   { 408, 72, 24, 24 },
+    { 432, 72, 24, 24 },   { 456, 72, 24, 24 },   { 480, 72, 24, 24 },
+    { 408, 96, 24, 24 },   { 432, 96, 24, 24 },   { 456, 96, 24, 24 },
+    { 480, 96, 24, 24 },   { 408, 120, 24, 24 },  { 432, 120, 24, 24 },
+    { 456, 120, 24, 24 },  { 480, 120, 24, 24 },  { 408, 144, 24, 24 },
+    { 432, 144, 24, 24 },  { 456, 144, 24, 24 },  { 480, 144, 24, 24 },
+    { 48, 192, 24, 24 },   { 72, 192, 24, 24 },   { 96, 192, 24, 24 },
+    { 120, 192, 24, 24 },  { 48, 216, 24, 24 },   { 72, 216, 24, 24 },
+    { 96, 216, 24, 24 },   { 120, 216, 24, 24 },  { 48, 240, 24, 24 },
+    { 72, 240, 24, 24 },   { 96, 240, 24, 24 },   { 120, 240, 24, 24 },
+    { 48, 264, 24, 24 },   { 72, 264, 24, 24 },   { 96, 264, 24, 24 },
+    { 120, 264, 24, 24 },  { 48, 288, 24, 24 },   { 72, 288, 24, 24 },
+    { 96, 288, 24, 24 },   { 120, 288, 24, 24 },  { 168, 192, 24, 24 },
+    { 192, 192, 24, 24 },  { 216, 192, 24, 24 },  { 240, 192, 24, 24 },
+    { 168, 216, 24, 24 },  { 192, 216, 24, 24 },  { 216, 216, 24, 24 },
+    { 240, 216, 24, 24 },  { 168, 240, 24, 24 },  { 192, 240, 24, 24 },
+    { 216, 240, 24, 24 },  { 240, 240, 24, 24 },  { 168, 264, 24, 24 },
+    { 192, 264, 24, 24 },  { 216, 264, 24, 24 },  { 240, 264, 24, 24 },
+    { 168, 288, 24, 24 },  { 192, 288, 24, 24 },  { 216, 288, 24, 24 },
+    { 240, 288, 24, 24 },  { 288, 192, 24, 24 },  { 312, 192, 24, 24 },
+    { 336, 192, 24, 24 },  { 360, 192, 24, 24 },  { 288, 216, 24, 24 },
+    { 312, 216, 24, 24 },  { 336, 216, 24, 24 },  { 360, 216, 24, 24 },
+    { 288, 240, 24, 24 },  { 312, 240, 24, 24 },  { 336, 240, 24, 24 },
+    { 360, 240, 24, 24 },  { 288, 264, 24, 24 },  { 312, 264, 24, 24 },
+    { 336, 264, 24, 24 },  { 360, 264, 24, 24 },  { 288, 288, 24, 24 },
+    { 312, 288, 24, 24 },  { 336, 288, 24, 24 },  { 360, 288, 24, 24 },
+    { 408, 192, 24, 24 },  { 432, 192, 24, 24 },  { 456, 192, 24, 24 },
+    { 480, 192, 24, 24 },  { 408, 216, 24, 24 },  { 432, 216, 24, 24 },
+    { 456, 216, 24, 24 },  { 480, 216, 24, 24 },  { 408, 240, 24, 24 },
+    { 432, 240, 24, 24 },  { 456, 240, 24, 24 },  { 480, 240, 24, 24 },
+    { 408, 264, 24, 24 },  { 432, 264, 24, 24 },  { 456, 264, 24, 24 },
+    { 480, 264, 24, 24 },  { 408, 288, 24, 24 },  { 432, 288, 24, 24 },
+    { 456, 288, 24, 24 },  { 480, 288, 24, 24 },  { 48, 336, 24, 24 },
+    { 72, 336, 24, 24 },   { 96, 336, 24, 24 },   { 120, 336, 24, 24 },
+    { 48, 360, 24, 24 },   { 72, 360, 24, 24 },   { 96, 360, 24, 24 },
+    { 120, 360, 24, 24 },  { 48, 384, 24, 24 },   { 72, 384, 24, 24 },
+    { 96, 384, 24, 24 },   { 120, 384, 24, 24 },  { 48, 408, 24, 24 },
+    { 72, 408, 24, 24 },   { 96, 408, 24, 24 },   { 120, 408, 24, 24 },
+    { 48, 432, 24, 24 },   { 72, 432, 24, 24 },   { 96, 432, 24, 24 },
+    { 120, 432, 24, 24 },  { 168, 336, 24, 24 },  { 192, 336, 24, 24 },
+    { 216, 336, 24, 24 },  { 240, 336, 24, 24 },  { 168, 360, 24, 24 },
+    { 192, 360, 24, 24 },  { 216, 360, 24, 24 },  { 240, 360, 24, 24 },
+    { 168, 384, 24, 24 },  { 192, 384, 24, 24 },  { 216, 384, 24, 24 },
+    { 240, 384, 24, 24 },  { 168, 408, 24, 24 },  { 192, 408, 24, 24 },
+    { 216, 408, 24, 24 },  { 240, 408, 24, 24 },  { 168, 432, 24, 24 },
+    { 192, 432, 24, 24 },  { 216, 432, 24, 24 },  { 240, 432, 24, 24 },
+    { 288, 336, 24, 24 },  { 312, 336, 24, 24 },  { 336, 336, 24, 24 },
+    { 360, 336, 24, 24 },  { 360, 360, 24, 24 },  { 336, 360, 24, 24 },
+    { 312, 360, 24, 24 },  { 288, 360, 24, 24 },  { 288, 384, 24, 24 },
+    { 312, 384, 24, 24 },  { 336, 384, 24, 24 },  { 360, 384, 24, 24 },
+    { 288, 408, 24, 24 },  { 312, 408, 24, 24 },  { 336, 408, 24, 24 },
+    { 360, 408, 24, 24 },  { 288, 432, 24, 24 },  { 312, 432, 24, 24 },
+    { 336, 432, 24, 24 },  { 360, 432, 24, 24 },  { 408, 336, 24, 24 },
+    { 432, 336, 24, 24 },  { 456, 336, 24, 24 },  { 480, 336, 24, 24 },
+    { 408, 360, 24, 24 },  { 432, 360, 24, 24 },  { 456, 360, 24, 24 },
+    { 480, 360, 24, 24 },  { 408, 384, 24, 24 },  { 432, 384, 24, 24 },
+    { 456, 384, 24, 24 },  { 480, 384, 24, 24 },  { 408, 408, 24, 24 },
+    { 432, 408, 24, 24 },  { 456, 408, 24, 24 },  { 480, 408, 24, 24 },
+    { 408, 432, 24, 24 },  { 432, 432, 24, 24 },  { 456, 432, 24, 24 },
+    { 480, 432, 24, 24 },  { 48, 480, 24, 24 },   { 72, 480, 24, 24 },
+    { 96, 480, 24, 24 },   { 120, 480, 24, 24 },  { 48, 504, 24, 24 },
+    { 72, 504, 24, 24 },   { 96, 504, 24, 24 },   { 120, 504, 24, 24 },
+    { 48, 528, 24, 24 },   { 72, 528, 24, 24 },   { 96, 528, 24, 24 },
+    { 120, 528, 24, 24 },  { 48, 552, 24, 24 },   { 72, 552, 24, 24 },
+    { 96, 552, 24, 24 },   { 120, 552, 24, 24 },  { 48, 576, 24, 24 },
+    { 72, 576, 24, 24 },   { 96, 576, 24, 24 },   { 120, 576, 24, 24 },
+    { 168, 480, 24, 24 },  { 192, 480, 24, 24 },  { 216, 480, 24, 24 },
+    { 240, 480, 24, 24 },  { 168, 504, 24, 24 },  { 192, 504, 24, 24 },
+    { 216, 504, 24, 24 },  { 240, 504, 24, 24 },  { 168, 528, 24, 24 },
+    { 192, 528, 24, 24 },  { 216, 528, 24, 24 },  { 240, 528, 24, 24 },
+    { 168, 552, 24, 24 },  { 192, 552, 24, 24 },  { 216, 552, 24, 24 },
+    { 240, 552, 24, 24 },  { 168, 576, 24, 24 },  { 192, 576, 24, 24 },
+    { 216, 576, 24, 24 },  { 240, 576, 24, 24 },  { 288, 480, 24, 24 },
+    { 312, 480, 24, 24 },  { 336, 480, 24, 24 },  { 360, 480, 24, 24 },
+    { 288, 504, 24, 24 },  { 312, 504, 24, 24 },  { 336, 504, 24, 24 },
+    { 360, 504, 24, 24 },  { 288, 528, 24, 24 },  { 312, 528, 24, 24 },
+    { 336, 528, 24, 24 },  { 360, 528, 24, 24 },  { 288, 552, 24, 24 },
+    { 312, 552, 24, 24 },  { 336, 552, 24, 24 },  { 360, 552, 24, 24 },
+    { 288, 576, 24, 24 },  { 312, 576, 24, 24 },  { 336, 576, 24, 24 },
+    { 360, 576, 24, 24 },  { 408, 480, 24, 24 },  { 432, 480, 24, 24 },
+    { 456, 480, 24, 24 },  { 480, 480, 24, 24 },  { 408, 504, 24, 24 },
+    { 432, 504, 24, 24 },  { 456, 504, 24, 24 },  { 480, 504, 24, 24 },
+    { 408, 528, 24, 24 },  { 432, 528, 24, 24 },  { 456, 528, 24, 24 },
+    { 480, 528, 24, 24 },  { 408, 552, 24, 24 },  { 432, 552, 24, 24 },
+    { 456, 552, 24, 24 },  { 480, 552, 24, 24 },  { 408, 576, 24, 24 },
+    { 432, 576, 24, 24 },  { 456, 576, 24, 24 },  { 480, 576, 24, 24 },
+    { 552, 24, 336, 304 }, { 560, 40, 320, 272 }, { 552, 360, 336, 72 },
+    { 568, 384, 72, 24 },  { 680, 384, 72, 24 },  { 800, 384, 72, 24 },
+    { 648, 464, 144, 48 }, { 88, 168, 10, 24 },   { 208, 168, 10, 24 },
+    { 328, 168, 10, 24 },  { 448, 168, 10, 24 },  { 88, 312, 10, 24 },
+    { 208, 312, 10, 24 },  { 328, 312, 10, 24 },  { 448, 312, 10, 24 },
+    { 88, 456, 10, 24 },   { 208, 456, 10, 24 },  { 328, 456, 10, 24 },
+    { 448, 456, 10, 24 },  { 88, 600, 10, 24 },   { 208, 600, 10, 24 },
+    { 328, 600, 10, 24 },  { 448, 600, 10, 24 },  { 552, 544, 120, 24 },
+    { 720, 544, 72, 24 },  { 816, 544, 72, 24 },
+  };
+
+  for (int i = 0; i < LayoutRecsCount; i++)
+    state.layoutRecs[i] = OffsetAndDimensions[i];
 
   // Custom variables initialization
 
