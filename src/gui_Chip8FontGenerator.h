@@ -9,13 +9,10 @@
  *       INIT: GuiChip8FontGeneratorState state = InitGuiChip8FontGenerator();
  *       DRAW: GuiChip8FontGenerator(&state);
  *
- *   LICENSE: Propietary License
+ *   LICENSE: Icebarf's License
  *
- *   Copyright (c) 2022 Amritpal Singh. All Rights Reserved.
+ *   Copyright (c) 2023 Amritpal Singh. All Rights Reserved.
  *
- *   Unauthorized copying of this file, via any medium is strictly prohibited
- *   This project is proprietary and confidential unless the owner allows
- *   usage in any other form by expresely written permission.
  *
  **********************************************************************************************/
 
