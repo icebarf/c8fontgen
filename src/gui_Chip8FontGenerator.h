@@ -429,16 +429,6 @@ extern "C"
 #include "raygui.h"
 
 //----------------------------------------------------------------------------------
-// Global Variables Definition
-//----------------------------------------------------------------------------------
-//...
-
-//----------------------------------------------------------------------------------
-// Internal Module Functions Definition
-//----------------------------------------------------------------------------------
-//...
-
-//----------------------------------------------------------------------------------
 // Module Functions Definition
 //----------------------------------------------------------------------------------
 GuiChip8FontGeneratorState
@@ -450,6 +440,10 @@ InitGuiChip8FontGenerator(void)
   state.Origin = (Vector2){ 0, 0 }; // ANCHOR ID:1
 
   // Initilize controls variables
+
+  /* Note to self: "true" here indicates off state in the pixel editor.
+   * "false" will obviously indicate on state in the pixel editor.
+   */
   for (int i = 0; i < TOTAL_TOGGLE_COUNT; i++)
     state.ToggleActive[i] = true;
   state.OuputFontTextBoxEditMode = false;
