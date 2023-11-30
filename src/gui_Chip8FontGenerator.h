@@ -643,9 +643,10 @@ GenerateFontButton(GuiChip8FontGeneratorState* state)
 }
 // Button: ResetEditorButton logic
 static void
-ResetEditorButton()
+ResetEditorButton(bool (*toggles)[320])
 {
-  // TODO: Implement control logic
+  for (int i = 0; i < 320; i++)
+    (*toggles)[i] = true;
 }
 // Button: CopyToClipboardButton logic
 static void
@@ -724,7 +725,7 @@ GuiChip8FontGenerator(GuiChip8FontGeneratorState* state)
   GuiLabel(state->layoutRecs[342], Label342Text);
   GuiLabel(state->layoutRecs[343], Label343Text);
   if (GuiButton(state->layoutRecs[344], ResetEditorButtonText))
-    ResetEditorButton();
+    ResetEditorButton(&state->ToggleActive);
   if (GuiButton(state->layoutRecs[345], CopyToClipboardButtonText))
     CopyToClipboardButton(&state->OuputFontTextBoxText);
   if (GuiButton(state->layoutRecs[346], DarkThemeButtonText))
