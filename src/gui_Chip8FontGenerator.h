@@ -364,25 +364,19 @@ typedef struct
     Toggle320,
     TOTAL_TOGGLE_COUNT = 320,
     LayoutRecsCount = 347,
+    OUTPUT_TEXT_MAX = 512,
   };
 
   // Define controls variables
   bool ToggleActive[TOTAL_TOGGLE_COUNT]; // Toggle: Toggle button active
   bool OuputFontTextBoxEditMode;
-  char OuputFontTextBoxText[512]; // TextBox: OuputFontTextBox
+  char OuputFontTextBoxText[OUTPUT_TEXT_MAX]; // TextBox: OuputFontTextBox
 
   // Define rectangles
   Rectangle layoutRecs[LayoutRecsCount];
 
   // Custom state variables (depend on development software)
   // NOTE: This variables should be added manually if required
-
-  enum Mode
-  {
-    Hexadecimal,
-    Decimal,
-    Binary,
-  } OutputMode;
 
   uint8_t Sprites[16][5];
 
@@ -408,13 +402,10 @@ extern "C"
   //----------------------------------------------------------------------------------
   GuiChip8FontGeneratorState InitGuiChip8FontGenerator(void);
   void GuiChip8FontGenerator(GuiChip8FontGeneratorState* state);
-  static void OutputInHexButton();     // Button: OutputInHexButton logic
-  static void OutputInDecimalButton(); // Button: OutputInDecimalButton logic
-  static void OutputInBinaryButton();  // Button: OutputInBinaryButton logic
-  static void GenerateFontButton();    // Button: GenerateFontButton logic
-  static void ResetEditorButton();     // Button: ResetEditorButton logic
-  static void CopyToClipboardButton(
-    const char (*OutputText)[512]); // Button: CopyToClipboardButton logic
+  static void GenerateFontButton(); // Button: GenerateFontButton logic
+  static void ResetEditorButton();  // Button: ResetEditorButton logic
+  static void CopyToClipboardButton(const char (
+    *OutputText)[OUTPUT_TEXT_MAX]); // Button: CopyToClipboardButton logic
   static void DarkThemeButton();    // Button: DarkThemeButton logic
 
 #ifdef __cplusplus
@@ -570,7 +561,7 @@ InitGuiChip8FontGenerator(void)
     { 432, 576, 24, 24 },  { 456, 576, 24, 24 },  { 480, 576, 24, 24 },
     { 552, 24, 336, 304 }, { 560, 40, 320, 272 }, { 552, 360, 336, 72 },
     { 568, 384, 72, 24 },  { 680, 384, 72, 24 },  { 800, 384, 72, 24 },
-    { 648, 464, 144, 48 }, { 88, 168, 10, 24 },   { 208, 168, 10, 24 },
+    { 648, 414, 144, 48 }, { 88, 168, 10, 24 },   { 208, 168, 10, 24 },
     { 328, 168, 10, 24 },  { 448, 168, 10, 24 },  { 88, 312, 10, 24 },
     { 208, 312, 10, 24 },  { 328, 312, 10, 24 },  { 448, 312, 10, 24 },
     { 88, 456, 10, 24 },   { 208, 456, 10, 24 },  { 328, 456, 10, 24 },
@@ -585,24 +576,6 @@ InitGuiChip8FontGenerator(void)
   // Custom variables initialization
 
   return state;
-}
-// Button: OutputInHexButton logic
-static void
-OutputInHexButton(enum Mode* output)
-{
-  *output = Hexadecimal;
-}
-// Button: OutputInDecimalButton logic
-static void
-OutputInDecimalButton(enum Mode* Output)
-{
-  *Output = Decimal;
-}
-// Button: OutputInBinaryButton logic
-static void
-OutputInBinaryButton(enum Mode* Output)
-{
-  *Output = Binary;
 }
 
 uint8_t
@@ -647,17 +620,9 @@ FindSprites(uint8_t (*Sprites)[16][5], bool (*pixels)[TOTAL_TOGGLE_COUNT])
 }
 
 static void
-PutInTextBox(char (*OutText)[512], uint8_t (*Sprites)[16][5])
+PutInTextBox(char (*OutText)[OUTPUT_TEXT_MAX], uint8_t (*Sprites)[16][5])
 {
   for (int i = 0, index = 0; i < 16; i++, index += 28) {
-    // fprintf(stdout, "Sprite 0x%2x\n", i);
-    // fprintf(stdout,
-    //         "0x%2x, 0x%2x, 0x%2x, 0x%2x, 0x%2x\n\n",
-    //         (*Sprites)[i][0],
-    //         (*Sprites)[i][1],
-    //         (*Sprites)[i][2],
-    //         (*Sprites)[i][3],
-    //         (*Sprites)[i][4]);
     snprintf(&(*OutText)[30 * i],
              31,
              "0x%2x, 0x%2x, 0x%2x, 0x%2x, 0x%2x,\n",
@@ -684,7 +649,7 @@ ResetEditorButton()
 }
 // Button: CopyToClipboardButton logic
 static void
-CopyToClipboardButton(const char (*OutputText)[512])
+CopyToClipboardButton(const char (*OutputText)[OUTPUT_TEXT_MAX])
 {
   SetClipboardText(*OutputText);
 }
@@ -701,7 +666,6 @@ GuiChip8FontGenerator(GuiChip8FontGeneratorState* state)
   // Const text
   const char* PixelEditorBoxText = "Pixel Editor"; // GROUPBOX: PixelEditorBox
   const char* OutputFontBoxText = "Output Font";   // GROUPBOX: OutputFontBox
-  const char* FontFormatBoxText = "Font Format";   // GROUPBOX: FontFormatBox
   const char* OutputInHexButtonText = "Hex";       // BUTTON: OutputInHexButton
   const char* OutputInDecimalButtonText =
     "Decimal"; // BUTTON: OutputInDecimalButton
@@ -741,13 +705,6 @@ GuiChip8FontGenerator(GuiChip8FontGeneratorState* state)
                  128,
                  state->OuputFontTextBoxEditMode))
     state->OuputFontTextBoxEditMode = !state->OuputFontTextBoxEditMode;
-  GuiGroupBox(state->layoutRecs[323], FontFormatBoxText);
-  if (GuiButton(state->layoutRecs[324], OutputInHexButtonText))
-    OutputInHexButton(&state->OutputMode);
-  if (GuiButton(state->layoutRecs[325], OutputInDecimalButtonText))
-    OutputInDecimalButton(&state->OutputMode);
-  if (GuiButton(state->layoutRecs[326], OutputInBinaryButtonText))
-    OutputInBinaryButton(&state->OutputMode);
   if (GuiButton(state->layoutRecs[327], GenerateFontButtonText))
     GenerateFontButton(state);
   GuiLabel(state->layoutRecs[328], Label328Text);
