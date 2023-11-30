@@ -27,6 +27,10 @@
 #include <stdio.h>  // Required for: fprintf()
 #include <string.h> // Required for: strcpy()
 
+/* Styles or Themes for the program */
+#include "cyberc8.rgs.h"
+#include "lightc8.rgs.h"
+
 #ifndef GUI_CHIP8FONTGENERATOR_H
 #define GUI_CHIP8FONTGENERATOR_H
 
@@ -370,6 +374,7 @@ typedef struct
   // Define controls variables
   bool ToggleActive[TOTAL_TOGGLE_COUNT]; // Toggle: Toggle button active
   bool OuputFontTextBoxEditMode;
+  bool currentTheme;
   char OuputFontTextBoxText[OUTPUT_TEXT_MAX]; // TextBox: OuputFontTextBox
 
   // Define rectangles
@@ -406,7 +411,7 @@ extern "C"
   static void ResetEditorButton();  // Button: ResetEditorButton logic
   static void CopyToClipboardButton(const char (
     *OutputText)[OUTPUT_TEXT_MAX]); // Button: CopyToClipboardButton logic
-  static void DarkThemeButton();    // Button: DarkThemeButton logic
+  static void ToggleThemeButton();  // Button: ToggleThemeButton logic
 
 #ifdef __cplusplus
 }
@@ -654,11 +659,19 @@ CopyToClipboardButton(const char (*OutputText)[OUTPUT_TEXT_MAX])
 {
   SetClipboardText(*OutputText);
 }
-// Button: DarkThemeButton logic
+// Button: ToggleThemeButton logic
 static void
-DarkThemeButton()
+ToggleThemeButton(bool* currentTheme)
 {
-  // TODO: Implement control logic
+  if (*currentTheme) {
+    GuiLoadStyleCyberC8();
+    *currentTheme = false;
+    return;
+  }
+
+  GuiLoadStyleDefault();
+  GuiLoadStyleLightC8();
+  *currentTheme = true;
 }
 
 void
@@ -667,11 +680,6 @@ GuiChip8FontGenerator(GuiChip8FontGeneratorState* state)
   // Const text
   const char* PixelEditorBoxText = "Pixel Editor"; // GROUPBOX: PixelEditorBox
   const char* OutputFontBoxText = "Output Font";   // GROUPBOX: OutputFontBox
-  const char* OutputInHexButtonText = "Hex";       // BUTTON: OutputInHexButton
-  const char* OutputInDecimalButtonText =
-    "Decimal"; // BUTTON: OutputInDecimalButton
-  const char* OutputInBinaryButtonText =
-    "Binary"; // BUTTON: OutputInBinaryButton
   const char* GenerateFontButtonText =
     "Generate Font";              // BUTTON: GenerateFontButton
   const char* Label328Text = "0"; // LABEL: Label328
@@ -693,8 +701,9 @@ GuiChip8FontGenerator(GuiChip8FontGeneratorState* state)
   const char* ResetEditorButtonText =
     "Reset Editor"; // BUTTON: ResetEditorButton
   const char* CopyToClipboardButtonText =
-    "Copy font";                            // BUTTON: CopyToClipboardButton
-  const char* DarkThemeButtonText = "Dark"; // BUTTON: DarkThemeButton
+    "Copy font"; // BUTTON: CopyToClipboardButton
+  const char* ToggleThemeButtonText =
+    "Toggle Theme"; // BUTTON: ToggleThemeButton
 
   // Draw controls
   GuiGroupBox(state->layoutRecs[0], PixelEditorBoxText);
@@ -728,8 +737,8 @@ GuiChip8FontGenerator(GuiChip8FontGeneratorState* state)
     ResetEditorButton(&state->ToggleActive);
   if (GuiButton(state->layoutRecs[345], CopyToClipboardButtonText))
     CopyToClipboardButton(&state->OuputFontTextBoxText);
-  if (GuiButton(state->layoutRecs[346], DarkThemeButtonText))
-    DarkThemeButton();
+  if (GuiButton(state->layoutRecs[346], ToggleThemeButtonText))
+    ToggleThemeButton(&state->currentTheme);
 }
 
 #endif // GUI_CHIP8FONTGENERATOR_IMPLEMENTATION

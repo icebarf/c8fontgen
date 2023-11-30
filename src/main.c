@@ -1,7 +1,5 @@
 #include "gui_Chip8FontGenerator.h"
 
-#include "lightc8.rgs.h"
-
 enum
 {
   DISPW = 910,
@@ -14,7 +12,7 @@ main(int argc, char* argv[])
   GuiChip8FontGeneratorState window_layout = InitGuiChip8FontGenerator();
   InitWindow(DISPW, DISPH, "Chip-8 Font Generator");
   SetTargetFPS(60);
-  GuiLoadStyleLightC8();
+  GuiLoadStyleCyberC8(); // load dark theme by default
 
   while (!WindowShouldClose()) {
     BeginDrawing();
