@@ -413,8 +413,9 @@ extern "C"
   static void OutputInBinaryButton();  // Button: OutputInBinaryButton logic
   static void GenerateFontButton();    // Button: GenerateFontButton logic
   static void ResetEditorButton();     // Button: ResetEditorButton logic
-  static void LightThemeButton();      // Button: LightThemeButton logic
-  static void DarkThemeButton();       // Button: DarkThemeButton logic
+  static void CopyToClipboardButton(
+    const char (*OutputText)[512]); // Button: CopyToClipboardButton logic
+  static void DarkThemeButton();    // Button: DarkThemeButton logic
 
 #ifdef __cplusplus
 }
@@ -681,11 +682,11 @@ ResetEditorButton()
 {
   // TODO: Implement control logic
 }
-// Button: LightThemeButton logic
+// Button: CopyToClipboardButton logic
 static void
-LightThemeButton()
+CopyToClipboardButton(const char (*OutputText)[512])
 {
-  // TODO: Implement control logic
+  SetClipboardText(*OutputText);
 }
 // Button: DarkThemeButton logic
 static void
@@ -725,9 +726,10 @@ GuiChip8FontGenerator(GuiChip8FontGeneratorState* state)
   const char* Label342Text = "E"; // LABEL: Label342
   const char* Label343Text = "F"; // LABEL: Label343
   const char* ResetEditorButtonText =
-    "Reset Editor";                           // BUTTON: ResetEditorButton
-  const char* LightThemeButtonText = "Light"; // BUTTON: LightThemeButton
-  const char* DarkThemeButtonText = "Dark";   // BUTTON: DarkThemeButton
+    "Reset Editor"; // BUTTON: ResetEditorButton
+  const char* CopyToClipboardButtonText =
+    "Copy font";                            // BUTTON: CopyToClipboardButton
+  const char* DarkThemeButtonText = "Dark"; // BUTTON: DarkThemeButton
 
   // Draw controls
   GuiGroupBox(state->layoutRecs[0], PixelEditorBoxText);
@@ -766,8 +768,8 @@ GuiChip8FontGenerator(GuiChip8FontGeneratorState* state)
   GuiLabel(state->layoutRecs[343], Label343Text);
   if (GuiButton(state->layoutRecs[344], ResetEditorButtonText))
     ResetEditorButton();
-  if (GuiButton(state->layoutRecs[345], LightThemeButtonText))
-    LightThemeButton();
+  if (GuiButton(state->layoutRecs[345], CopyToClipboardButtonText))
+    CopyToClipboardButton(&state->OuputFontTextBoxText);
   if (GuiButton(state->layoutRecs[346], DarkThemeButtonText))
     DarkThemeButton();
 }
